@@ -2,7 +2,7 @@ path = ""
 file = "words_84k_9"
 
 f = open(f'{path}{file}.txt', 'r')
-
+herok
 ff = []
 
 for line in f:
