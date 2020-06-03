@@ -1,1 +1,1 @@
-emoji==0.5.4
+Python 3.8.3rc1
