@@ -9,6 +9,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+if __name__ == '__main__':
+    app.run()
+
 def helium(specific_timestamp, results, currently_working, guttedwords, dic, desirable_words, threshold, coords, mandatory_words, cw_width, cw_height):
 
     global most_recent_timestamp
@@ -161,4 +164,3 @@ def get_message():
 
         return jsonify({"a message": "Alright, I'm on it!", "mandatory_words": mandatory_words, "ought_you_continue_get_requests": currently_working, "results": results, "resultcount": len(results)})
 
-app.run()
