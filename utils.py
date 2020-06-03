@@ -1,5 +1,23 @@
 from collections import Counter
+from words import trunk
+import random
+import copy
 
+def add_desired_and_remove_banned_from_dict(desired_words, banned_words, dict):
+    dict2 = copy.deepcopy(dict)
+    for desired in desired_words:
+        gut = gut_words(desired)[0]
+        if gut in dict2.keys() and desired not in dict2[gut]:
+            dict2[gut].append(desired)
+        else:
+            dict2[gut] = [desired]
+    for banned in banned_words:
+        entry = dict2[gut_words(banned)[0]]
+        if banned in entry:
+            entry.remove(banned)
+            if len(entry) == 0:
+                del dict2[gut_words(banned)[0]]
+    return dict2
 def print_grid(grid):
     print(*grid, sep='\n')
 def file_to_list(filename, path):
@@ -8,6 +26,10 @@ def file_to_list(filename, path):
         list_lower = [word.lower() for word in list]
     return list_lower
 def gut_words(wordlist):
+
+    if isinstance(wordlist, str):
+        wordlist = [wordlist]
+
     gutted_list = []
     for line in wordlist:
         word = line.strip()
@@ -16,10 +38,10 @@ def gut_words(wordlist):
             word_array.append(word[i])
         gutted_list.append("".join(word_array))
 
-    dic = dict(Counter(gutted_list))
+    # dic = dict(Counter(gutted_list))
 
     lis = list(set(gutted_list))
-    return (lis, dic)
+    return lis
 def ungut_words(gutted_word, wordlist):
 
     def validate_guts(gutted_word, word):
@@ -45,15 +67,24 @@ def sum_dicts(a, b):
         else:
             a[key] = b[key]
     return a
-def prepare_helium(wordlist_5_unfiltered, banned_words, desirable_words_unfiltered):
-    desirable_words = list(set(desirable_words_unfiltered).difference(banned_words))
-    (gutted_desirable_words, gutted_desirable_words_dict) = gut_words(desirable_words)
+def prepare_helium(wordlength, banned_words, desirable_words):
 
-    wordlist_5 = list(set(wordlist_5_unfiltered).difference(banned_words + desirable_words))
-    (gutted_words_5, gutted_words_5_dict) = gut_words(wordlist_5)
+    #Filter desired and banned words to only those of wordlength.
+    banned_words = list(filter(lambda w : len(w) == wordlength, banned_words))
+    desirable_words = list(filter(lambda w : len(w) == wordlength, desirable_words))
 
-    superlist = wordlist_5 + desirable_words
-    supergut = gutted_desirable_words + [gut for gut in gutted_words_5 if gut not in gutted_desirable_words]
-    superdict = make_dict(supergut, superlist)
+    #Fetch the fivers - both WORDS and DICT - from trunk. I say fivers, could be sixers, seveners, etc. Then filter.
+    trunk_dict = add_desired_and_remove_banned_from_dict(desirable_words, banned_words, trunk[wordlength]["dict"])
 
-    return (supergut, superdict, desirable_words)
+    #Shuffle gut list then move DESIRED words to START.
+    supergut = list(trunk_dict.keys())
+    random.shuffle(supergut)
+    for gut in gut_words(desirable_words):
+        supergut.remove(gut)
+        supergut = [gut] + supergut
+
+    #ye# trunk_words_filtered = sum([word for word in trunk_dict_filtered.values()], [])
+    #egh# trunk_words_filtered = list(set(trunk_words).difference(banned_words + desirable_words))
+    #hegh# supergut = gutted_desirable_words + [gut for gut in gutted_words_5 if gut not in gutted_desirable_words]
+
+    return (supergut, trunk_dict, desirable_words)
