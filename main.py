@@ -10,6 +10,7 @@ CORS(app)
 
 # if __name__ == '__main__':
 #     app.run()
+#
 
 def helium(specific_timestamp, results, currently_working, guttedwords, dic, desirable_words, threshold, coords, mandatory_words, cw_width, cw_height):
 
