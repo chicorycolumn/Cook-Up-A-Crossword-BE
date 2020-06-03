@@ -1,7 +1,6 @@
 from utils import print_grid, file_to_list, gut_words, ungut_words, make_dict, sum_dicts, prepare_helium
 from words import fivers, seveners, niners
 import time
-
 from threading import Timer
 
 from flask import Flask, request, render_template, jsonify
@@ -9,8 +8,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
 
 def helium(specific_timestamp, results, currently_working, guttedwords, dic, desirable_words, threshold, coords, mandatory_words, cw_width, cw_height):
 
