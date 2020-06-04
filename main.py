@@ -166,10 +166,18 @@ def get_message():
             (supergut, superdict, desirable_words) = prepare_helium(wordlength, data["banned_words"], desirable_words_unfiltered)
             helium(specific_timestamp, results, currently_working, supergut, superdict, desirable_words, data["threshold"], coords, mandatory_words, grid_width, grid_height)
 
+        def kill():
+            print("that's enough for now")
+            global most_recent_timestamp
+            most_recent_timestamp = time.time()
+
         wordlength = 5
         # begin_crosswordwizard()
         t = Timer(1.0, begin_crosswordwizard)
         t.start()
+
+        temporary_patch = Timer(20.0, kill)
+        temporary_patch.start()
 
         return jsonify({"a message": "Alright, I'm on it!", "million_perms_processed": perm_count/1000000, "mandatory_words": mandatory_words, "ought_you_continue_get_requests": currently_working, "results": results, "resultcount": len(results)})
 
