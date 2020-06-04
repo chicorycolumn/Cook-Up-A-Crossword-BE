@@ -181,6 +181,6 @@ def get_message():
 
         return jsonify({"a message": "Alright, I'm on it!", "million_perms_processed": perm_count/1000000, "mandatory_words": mandatory_words, "ought_you_continue_get_requests": currently_working, "results": results, "resultcount": len(results)})
 
-if __name__ == '__main__':
-    app.run(debug=False)
+# if __name__ == '__main__':
+#     app.run(debug=False)
 
