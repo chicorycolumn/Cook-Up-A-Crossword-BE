@@ -6,6 +6,7 @@ from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
+app.config['DEBUG'] = True
 
 def helium(specific_timestamp, results, currently_working, guttedwords, dic, desirable_words, threshold, coords, mandatory_words, cw_width, cw_height):
 
