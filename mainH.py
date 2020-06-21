@@ -6,7 +6,6 @@ from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
-app.config['DEBUG'] = True
 
 def helium(specific_timestamp, results, currently_working, guttedwords, dic, desirable_words, threshold, coords, mandatory_words, cw_width, cw_height):
 
@@ -134,7 +133,18 @@ def get_message():
     global mandatory_words
     global perm_count
 
+    def kill():
+        print("that's enough for now")
+        global most_recent_timestamp
+        most_recent_timestamp = time.time()
+
+    #In six seconds the process will be killed, unless we get a GET reqest.
+    countdown_to_auto_kill = Timer(6.0, kill)
+    countdown_to_auto_kill.start()
+
+
     if request.method == "GET":
+        countdown_to_auto_kill.cancel()
         return jsonify({"mandatory_words": mandatory_words, "million_perms_processed": perm_count/1000000, "ought_you_continue_get_requests": currently_working, "results": results, "resultcount": len(results)})
 
     elif request.method == "POST":
@@ -167,21 +177,14 @@ def get_message():
             (supergut, superdict, desirable_words) = prepare_helium(wordlength, data["banned_words"], desirable_words_unfiltered)
             helium(specific_timestamp, results, currently_working, supergut, superdict, desirable_words, data["threshold"], coords, mandatory_words, grid_width, grid_height)
 
-        def kill():
-            print("that's enough for now")
-            global most_recent_timestamp
-            most_recent_timestamp = time.time()
-
         wordlength = 5
-        # begin_crosswordwizard()
         t = Timer(1.0, begin_crosswordwizard)
         t.start()
 
-        temporary_patch = Timer(20.0, kill)
-        temporary_patch.start()
+
 
         return jsonify({"a message": "Alright, I'm on it!", "million_perms_processed": perm_count/1000000, "mandatory_words": mandatory_words, "ought_you_continue_get_requests": currently_working, "results": results, "resultcount": len(results)})
 
-# if __name__ == '__main__':
-#     app.run(debug=False)
+if __name__ == '__main__':
+    app.run(debug=False)
 

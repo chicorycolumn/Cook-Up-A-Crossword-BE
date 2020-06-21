@@ -67,24 +67,36 @@ def sum_dicts(a, b):
         else:
             a[key] = b[key]
     return a
-def prepare_helium(wordlength, banned_words, desirable_words):
+def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_words):
 
     #Filter desired and banned words to only those of wordlength.
-    banned_words = list(filter(lambda w : len(w) == wordlength, banned_words))
-    desirable_words = list(filter(lambda w : len(w) == wordlength, desirable_words))
+    banned_words = list(filter(lambda w : len(w) == grid_dimension, banned_words))
+    desirable_words = list(filter(lambda w : len(w) == grid_dimension, desirable_words))
+    mandatory_words = list(filter(lambda w : len(w) == grid_dimension, mandatory_words))
 
     #Fetch the fivers - both WORDS and DICT - from trunk. I say fivers, could be sixers, seveners, etc. Then filter.
-    trunk_dict = add_desired_and_remove_banned_from_dict(desirable_words, banned_words, trunk[wordlength]["dict"])
+    trunk_dict = add_desired_and_remove_banned_from_dict(desirable_words, banned_words, trunk[grid_dimension]["dict"])
 
     #Shuffle gut list then move DESIRED words to START.
     supergut = list(trunk_dict.keys())
     random.shuffle(supergut)
+    random.shuffle(desirable_words)
+
     for gut in gut_words(desirable_words):
         supergut.remove(gut)
         supergut = [gut] + supergut
+
+    gutted_mand = []
+    if bool(mandatory_words):
+        gutted_mand = gut_words(mandatory_words)
+        supergut = gutted_mand + [gut for gut in supergut if gut not in gutted_mand]
+        mand_dic = make_dict(gutted_mand, mandatory_words)
+        trunk_dict = sum_dicts(trunk_dict, mand_dic)
 
     #ye# trunk_words_filtered = sum([word for word in trunk_dict_filtered.values()], [])
     #egh# trunk_words_filtered = list(set(trunk_words).difference(banned_words + desirable_words))
     #hegh# supergut = gutted_desirable_words + [gut for gut in gutted_words_5 if gut not in gutted_desirable_words]
 
-    return (supergut, trunk_dict, desirable_words)
+    return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand}
+# test_data = { "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
+test_data = { "mandatory_words": ["stream", "roams", "apple"], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
