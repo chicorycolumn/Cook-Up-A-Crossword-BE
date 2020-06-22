@@ -1,8 +1,8 @@
-a = [1, 2, 3]
-b = [3, 4, 5]
-c = [2, 4, 6, 8, 10]
+import itertools
 
-x = set(set(a + b)).difference(c)
+a = ["aaa", "bbb", "ccc"]
 
+gen = itertools.permutations(a, 3)
 
-print(x)
+while True:
+    print(next(gen))

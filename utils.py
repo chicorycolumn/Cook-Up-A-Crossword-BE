@@ -55,10 +55,10 @@ def ungut_words(gutted_word, wordlist):
         return True
 
     return [word for word in wordlist if validate_guts(gutted_word, word)]
-def make_dict(gut, list):
+def make_dict(gutlist, list):
     dic = {}
-    for g in gut:
-        dic[g] = ungut_words(g, list)
+    for gut in gutlist:
+        dic[gut] = ungut_words(gut, list)
     return dic
 def sum_dicts(a, b):
     for key in b:
@@ -97,6 +97,11 @@ def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_word
     #egh# trunk_words_filtered = list(set(trunk_words).difference(banned_words + desirable_words))
     #hegh# supergut = gutted_desirable_words + [gut for gut in gutted_words_5 if gut not in gutted_desirable_words]
 
-    return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand}
-# test_data = { "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
-test_data = { "mandatory_words": ["stream", "roams", "apple"], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
+    return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand, "mand_words_filtered": mandatory_words}
+# test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
+# test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ['stream', 'title'], "banned_words": [], "desirable_words_unfiltered": ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], "threshold": 2 }
+test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": [], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
+
+
+def make_dict_from_scratch(wordlength):
+    return(make_dict(gut_words(trunk[wordlength]["words"]), trunk[wordlength]["words"]))
