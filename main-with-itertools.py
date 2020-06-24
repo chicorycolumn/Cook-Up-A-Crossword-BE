@@ -15,7 +15,7 @@ eventlet.monkey_patch()
 # sio = socketio.Server()
 # sio = socketio.AsyncServer(cors_allowed_origins=['*'])
 
-sio = socketio.Server(cors_allowed_origins='*')
+sio = socketio.Server(cors_allowed_origins='*', transports='websocket')
 
 app = socketio.WSGIApp(sio, static_files={
     '/': {'content_type': 'text/html', 'filename': 'index.html'}
