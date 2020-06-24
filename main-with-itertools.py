@@ -239,9 +239,14 @@ def client_says_terminate(sid, data):
     print("The client has asked to terminate.", sid)
     terminate()
 
+@sio.event
+def verify_off(sid):
+    send_message(sid, {"million_perms_processed": perm_count / 1000000})
+
 sio.on('connect', connect);
 sio.on('disconnect', disconnect);
 sio.on("message", receive_message)
+sio.on("verify off", verify_off)
 sio.on("grid specs", receive_grid_specs)
 sio.on("please terminate", client_says_terminate)
 sio.on('connect_error', handle_errors);
