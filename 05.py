@@ -1,8 +1,11 @@
-import itertools
+if int("0"):
+    print("ayylmao")
 
-a = ["aaa", "bbb", "ccc"]
-
-gen = itertools.permutations(a, 3)
-
-while True:
-    print(next(gen))
+# import itertools
+#
+# a = ["aaa", "bbb", "ccc"]
+#
+# gen = itertools.permutations(a, 3)
+#
+# while True:
+#     print(next(gen))

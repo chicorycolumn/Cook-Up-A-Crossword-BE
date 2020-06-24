@@ -15,7 +15,7 @@ eventlet.monkey_patch()
 # sio = socketio.Server()
 # sio = socketio.AsyncServer(cors_allowed_origins=['*'])
 
-sio = socketio.Server(cors_allowed_origins=['*'])
+sio = socketio.Server(cors_allowed_origins='*')
 
 app = socketio.WSGIApp(sio, static_files={
     '/': {'content_type': 'text/html', 'filename': 'index.html'}
@@ -44,7 +44,8 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
     desirable_down = down_resource["desirable_words"]
     mandwords_down = down_resource["mand_words_filtered"]
 
-    mandatory_words = mandwords_across + mandwords_down
+    mandatory_words = list(set(mandwords_across + mandwords_down))
+    desirable_combined = list(set(desirable_across + desirable_down))
 
     global most_recent_timestamp
     global perm_count
@@ -57,6 +58,17 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
     gut_gen = permutations(guttedwords_across, math.ceil(cw_height / 2))
 
     while starting_timestamp == most_recent_timestamp and starting_timestamp + automatic_timeout_value > time.time():
+
+        # print("starting_timestamp", starting_timestamp)
+        # print("most_recent_timestamp", most_recent_timestamp)
+        # print("automatic_timeout_value", automatic_timeout_value)
+
+        # print(starting_timestamp == most_recent_timestamp and starting_timestamp + automatic_timeout_value > time.time())
+        # print("***")
+        # print(starting_timestamp + automatic_timeout_value)
+        # print(time.time())
+        # print("***")
+
         current_guts = next(gut_gen)
 
         # Kick out if any across guts are in putative grid more times that they have fullwords.
@@ -102,7 +114,7 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
         bank = {**bank, **temporary_bank}
 
         #Kick out if insufficient quantity of desirable_words in putative grid.
-        if len(list(filter(lambda ungutted_list : bool(len(set(ungutted_list).intersection(set(desirable_across + desirable_down)))), [bank[coord]["ungutted"] for coord in bank.keys()]))) < threshold:
+        if len(list(filter(lambda ungutted_list : bool(len(set(ungutted_list).intersection(desirable_combined))), [bank[coord]["ungutted"] for coord in bank.keys()]))) < threshold:
             continue
 
         result = {"summary": [gut.upper() for gut in gridguts["across"]], "grid": []}
@@ -114,9 +126,8 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
                 mandatory_words_copy.remove(mand_word)
                 newest_line = (coord, mand_word.upper())
                 result["grid"].append(newest_line)
-
             else:
-                ungutted_list = [word.upper() if word in [desirable_across + desirable_down] else word for word in bank[coord]["ungutted"]]
+                ungutted_list = [word.upper() if word in desirable_combined else word for word in bank[coord]["ungutted"]]
                 newest_line = (coord, list(filter(lambda word: word.isupper(), ungutted_list)) + list(filter(lambda word: not word.isupper(), ungutted_list)))
                 result["grid"].append(newest_line)
 
@@ -132,18 +143,18 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
                      {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
                       "result": result})
             sio.sleep(0)
-
-
     # We've been kicked out of the while loop.
-    message = "Terminated by client request, or by automatic timeout that developer set (%d seconds), or (unlikely) by exhausting all permutations." % automatic_timeout_value
-    print(message)
-    sio.emit( "message", { "message": message } )
-    if count_mode:
-        print("RESULT COUNT SO FAR IS:", result_count)
-        timings.append(result_count)
-        result_count = 0
-        count_timings()
-    return
+
+    else:
+        message = "Terminated by client request, or by automatic timeout that developer set (%d seconds), or (unlikely) by exhausting all permutations." % automatic_timeout_value
+        print(message)
+        sio.emit( "message", { "message": message } )
+        if test_mode:
+            print("RESULT COUNT SO FAR IS:", result_count)
+            timings.append(result_count)
+            result_count = 0
+            count_timings()
+        return
 
 global perm_count
 perm_count = 0
@@ -236,9 +247,9 @@ sio.on("please terminate", client_says_terminate)
 sio.on('connect_error', handle_errors);
 sio.on('connect_failed', handle_errors);
 
-test_mode = True    # A dev switch to input test data directly, rather than via socket connection.
+test_mode = False    # A dev switch to input test data directly, rather than via socket connection.
 count_mode = 20     # How many iterations to count.
-automatic_timeout_value = 60
+automatic_timeout_value = 30
 
 def count_timings():
     if len(timings) >= count_mode:
@@ -256,4 +267,4 @@ if test_mode:
         receive_grid_specs(None, test_data)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5001)), app)
+    eventlet.wsgi.server(eventlet.listen(('', 5003)), app)
