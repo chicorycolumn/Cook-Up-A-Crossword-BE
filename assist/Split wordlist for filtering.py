@@ -1,32 +1,40 @@
-path = ""
-file = "words_84k_9"
+from utils import make_dict, gut_words
+
+path = "C:\\Users\\alani\\Desktop\\Python Words\\FILTERED\\"
+file = "words_84k_9_"
 
 f = open(f'{path}{file}.txt', 'r')
 
 ff = []
 
 for line in f:
-    ff.append(line)
+    ff.append(line.strip())
 
-g1 = open(f'{path}{file}-1.txt', 'w')
-g2 = open(f'{path}{file}-2.txt', 'w')
-g3 = open(f'{path}{file}-3.txt', 'w')
-g4 = open(f'{path}{file}-4.txt', 'w')
-g5 = open(f'{path}{file}-5.txt', 'w')
-g6 = open(f'{path}{file}-6.txt', 'w')
-g7 = open(f'{path}{file}-7.txt', 'w')
-g8 = open(f'{path}{file}-8.txt', 'w')
-g9 = open(f'{path}{file}-9.txt', 'w')
-gX = open(f'{path}{file}-X.txt', 'w')
-gX1 = open(f'{path}{file}-X1.txt', 'w')
-gX2 = open(f'{path}{file}-X2.txt', 'w')
-gX3 = open(f'{path}{file}-X3.txt', 'w')
-gX4 = open(f'{path}{file}-X4.txt', 'w')
+print(ff)
+#
+# gutlist = gut_words(fff)
+#
+# print(make_dict(gutlist, fff))
 
-arr = [g1, g2, g3, g4, g5, g6, g7, g8, g9, gX, gX1, gX2, gX3, gX4]
-
-count = 0
-
-for line in ff:
-    arr[int(count / 1000)].write(line)
-    count += 1
+# g1 = open(f'{path}{file}-1.txt', 'w')
+# g2 = open(f'{path}{file}-2.txt', 'w')
+# g3 = open(f'{path}{file}-3.txt', 'w')
+# g4 = open(f'{path}{file}-4.txt', 'w')
+# g5 = open(f'{path}{file}-5.txt', 'w')
+# g6 = open(f'{path}{file}-6.txt', 'w')
+# g7 = open(f'{path}{file}-7.txt', 'w')
+# g8 = open(f'{path}{file}-8.txt', 'w')
+# g9 = open(f'{path}{file}-9.txt', 'w')
+# gX = open(f'{path}{file}-X.txt', 'w')
+# gX1 = open(f'{path}{file}-X1.txt', 'w')
+# gX2 = open(f'{path}{file}-X2.txt', 'w')
+# gX3 = open(f'{path}{file}-X3.txt', 'w')
+# gX4 = open(f'{path}{file}-X4.txt', 'w')
+#
+# arr = [g1, g2, g3, g4, g5, g6, g7, g8, g9, gX, gX1, gX2, gX3, gX4]
+#
+# count = 0
+#
+# for line in ff:
+#     arr[int(count / 1000)].write(line)
+#     count += 1
