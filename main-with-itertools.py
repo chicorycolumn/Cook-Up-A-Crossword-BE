@@ -1,25 +1,35 @@
 from utils import print_grid, file_to_list, gut_words, ungut_words, make_dict, sum_dicts, prepare_helium, test_data
 import time
 import eventlet
-import socketio
 import math
 import threading
 from itertools import *
 eventlet.monkey_patch()
+from flask import Flask, render_template
+from flask_socketio import SocketIO
+
+eventlet.monkey_patch()
+
+app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*", transports=['websocket'])
+
+@app.route('/')
+def sessions(methods=['GET', 'POST']):
+    return render_template('session.html')
 
 # from flask import Flask, request, render_template, jsonify
 # from flask_cors import CORS
 # app = Flask(__name__)
 # CORS(app)
 
-# sio = socketio.Server()
-# sio = socketio.AsyncServer(cors_allowed_origins=['*'])
+# socketio = socketio.Server()
+# socketio = socketio.AsyncServer(cors_allowed_origins=['*'])
 
-sio = socketio.Server(cors_allowed_origins='*', transports='websocket')
-
-app = socketio.WSGIApp(sio, static_files={
-    '/': {'content_type': 'text/html', 'filename': 'index.html'}
-})
+# socketio = socketio.Server(cors_allowed_origins='*', transports='websocket')
+#
+# app = socketio.WSGIApp(socketio, static_files={
+#     '/': {'content_type': 'text/html', 'filename': 'index.html'}
+# })
 
 result_count = 0
 timings = []
@@ -30,7 +40,7 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
             return False
     return True
 
-def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp):
+def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp):
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -52,7 +62,7 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
     global test_mode
     global result_count
 
-    sio.sleep(0)
+    socketio.sleep(0)
 
     # gut_gen = product(guttedwords_across, repeat=( math.ceil(cw_height/2) ) )
     gut_gen = permutations(guttedwords_across, math.ceil(cw_height / 2))
@@ -137,18 +147,18 @@ def helium(sio, across_resource, down_resource, threshold, cw_width, cw_height, 
             print(result)
             print("RESULT COUNT IS:", result_count)
         else:
-            sio.sleep(0)
+            socketio.sleep(0)
             print(result)
-            sio.emit("produced grid",
+            socketio.emit("produced grid",
                      {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
                       "result": result})
-            sio.sleep(0)
+            socketio.sleep(0)
     # We've been kicked out of the while loop.
 
     else:
         message = "Terminated by client request, or by automatic timeout that developer set (%d seconds), or (unlikely) by exhausting all permutations." % automatic_timeout_value
         print(message)
-        sio.emit( "message", { "message": message } )
+        socketio.emit( "message", { "message": message } )
         if test_mode:
             print("RESULT COUNT SO FAR IS:", result_count)
             timings.append(result_count)
@@ -165,11 +175,10 @@ mandatory_words = []
 global most_recent_timestamp
 most_recent_timestamp = ""
 
-@sio.event
+
+@socketio.on('grid specs')
 def receive_grid_specs(sid, incomingData):
-
     print("The client sent these grid specifications: ", incomingData)
-
     global mandatory_words
     global perm_count
     perm_count = 0
@@ -203,7 +212,7 @@ def receive_grid_specs(sid, incomingData):
     else:
         prepared_resources_down = prepared_resources_across
 
-    helium(sio, prepared_resources_across, prepared_resources_down, data["threshold"],
+    helium(socketio, prepared_resources_across, prepared_resources_down, data["threshold"],
            data["grid_width"], data["grid_height"], automatic_timeout_value, starting_timestamp)
 
 def terminate():
@@ -211,46 +220,40 @@ def terminate():
     global most_recent_timestamp
     most_recent_timestamp = time.time()
 
-@sio.event
-def connect(sid, environ):
-    print('Client connected: ', sid)
-    send_message(sid, {"message": "The server confirms that the client has connected."})
+def send_message(data):
+    print('This message is being sent to the client: ', data)
+    socketio.emit('message', data)
 
-@sio.event
-def receive_message(sid, data):
+@socketio.on('connect')
+def connect(methods=['GET', 'POST']):
+    print('Client connected: ')
+    send_message({"message": "The server confirms that the client has connected."})
+
+@socketio.on("message")
+def receive_message(data, methods=['GET', 'POST']):
     print("The client has sent this message: ", data)
 
-@sio.event
-def send_message(sid, data):
-    print('This message is being sent to the client: ', data)
-    sio.emit('message', data)
-
-@sio.event
-def handle_errors(err):
+@socketio.on('connect_error')
+def handle_connect_error(err):
     print("An error occurred: ", err)
 
-@sio.event
-def disconnect(sid):
-    print("The client has disconnected.", sid)
+@socketio.on('connect_failed')
+def handle_connect_error(err):
+    print("An error occurred, connect failed: ", err)
+
+@socketio.on('disconnect')
+def disconnect(methods=['GET', 'POST']):
+    print("The client has disconnected.")
     terminate()
 
-@sio.event
-def client_says_terminate(sid, data):
-    print("The client has asked to terminate.", sid)
+@socketio.on("please terminate")
+def client_says_terminate(methods=['GET', 'POST']):
+    print("The client has asked to terminate.")
     terminate()
 
-@sio.event
-def verify_off(sid):
-    send_message(sid, {"million_perms_processed": perm_count / 1000000})
-
-sio.on('connect', connect);
-sio.on('disconnect', disconnect);
-sio.on("message", receive_message)
-sio.on("verify off", verify_off)
-sio.on("grid specs", receive_grid_specs)
-sio.on("please terminate", client_says_terminate)
-sio.on('connect_error', handle_errors);
-sio.on('connect_failed', handle_errors);
+@socketio.on("verify off")
+def verify_off(methods=['GET', 'POST']):
+    send_message({"million_perms_processed": perm_count / 1000000})
 
 test_mode = False    # A dev switch to input test data directly, rather than via socket connection.
 count_mode = 20     # How many iterations to count.
@@ -272,4 +275,7 @@ if test_mode:
         receive_grid_specs(None, test_data)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5003)), app)
+    socketio.run(app, debug=False)
+
+# if __name__ == '__main__':
+#     eventlet.wsgi.server(eventlet.listen(('', 5003)), app)
