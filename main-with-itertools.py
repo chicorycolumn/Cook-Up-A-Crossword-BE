@@ -177,7 +177,7 @@ most_recent_timestamp = ""
 
 
 @socketio.on('grid specs')
-def receive_grid_specs(sid, incomingData):
+def receive_grid_specs(incomingData):
     print("The client sent these grid specifications: ", incomingData)
     global mandatory_words
     global perm_count
@@ -231,6 +231,7 @@ def connect(methods=['GET', 'POST']):
 
 @socketio.on("message")
 def receive_message(data, methods=['GET', 'POST']):
+    send_message({"message": "Server received: " + data["message"]})
     print("The client has sent this message: ", data)
 
 @socketio.on('connect_error')
@@ -249,6 +250,7 @@ def disconnect(methods=['GET', 'POST']):
 @socketio.on("please terminate")
 def client_says_terminate(methods=['GET', 'POST']):
     print("The client has asked to terminate.")
+    send_message({"message": "Hi client, I hear you want to terminate."})
     terminate()
 
 @socketio.on("verify off")
@@ -266,13 +268,13 @@ def count_timings():
         print("Timeout: ", automatic_timeout_value)
         print("Number of iterations counted: ", count_mode)
         return
-    receive_grid_specs(None, test_data)
+    receive_grid_specs(test_data)
 
 if test_mode:
     if count_mode:
         count_timings()
     else:
-        receive_grid_specs(None, test_data)
+        receive_grid_specs(test_data)
 
 if __name__ == '__main__':
     socketio.run(app, debug=False)
