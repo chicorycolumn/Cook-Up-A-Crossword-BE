@@ -1,4 +1,3 @@
-from collections import Counter
 from words import trunk
 import random
 import copy
@@ -18,13 +17,16 @@ def add_desired_and_remove_banned_from_dict(desired_words, banned_words, dict):
             if len(entry) == 0:
                 del dict2[gut_words(banned)[0]]
     return dict2
+
 def print_grid(grid):
     print(*grid, sep='\n')
+
 def file_to_list(filename, path):
     with open(f'{path}{filename if isinstance(filename, str) else f"words_{filename[0]}k_{filename[1]}.txt"}', 'r') as f:
         list = f.read().splitlines()
         list_lower = [word.lower() for word in list]
     return list_lower
+
 def gut_words(wordlist):
 
     if isinstance(wordlist, str):
@@ -38,10 +40,9 @@ def gut_words(wordlist):
             word_array.append(word[i])
         gutted_list.append("".join(word_array))
 
-    # dic = dict(Counter(gutted_list))
-
     lis = list(set(gutted_list))
     return lis
+
 def ungut_words(gutted_word, wordlist):
 
     def validate_guts(gutted_word, word):
@@ -55,11 +56,13 @@ def ungut_words(gutted_word, wordlist):
         return True
 
     return [word for word in wordlist if validate_guts(gutted_word, word)]
+
 def make_dict(gutlist, list):
     dic = {}
     for gut in gutlist:
         dic[gut] = ungut_words(gut, list)
     return dic
+
 def sum_dicts(a, b):
     for key in b:
         if key in a.keys():
@@ -67,6 +70,7 @@ def sum_dicts(a, b):
         else:
             a[key] = b[key]
     return a
+
 def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_words):
 
     #Filter desired and banned words to only those of wordlength.
@@ -93,15 +97,10 @@ def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_word
         mand_dic = make_dict(gutted_mand, mandatory_words)
         trunk_dict = sum_dicts(trunk_dict, mand_dic)
 
-    #ye# trunk_words_filtered = sum([word for word in trunk_dict_filtered.values()], [])
-    #egh# trunk_words_filtered = list(set(trunk_words).difference(banned_words + desirable_words))
-    #hegh# supergut = gutted_desirable_words + [gut for gut in gutted_words_5 if gut not in gutted_desirable_words]
-
     return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand, "mand_words_filtered": mandatory_words}
 # test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
 # test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ['stream', 'title'], "banned_words": [], "desirable_words_unfiltered": ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], "threshold": 2 }
 test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": [], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
-
 
 def make_dict_from_scratch(wordlength):
     return(make_dict(gut_words(trunk[wordlength]["words"]), trunk[wordlength]["words"]))

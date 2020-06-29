@@ -1,8 +1,7 @@
-from utils import print_grid, file_to_list, gut_words, ungut_words, make_dict, sum_dicts, prepare_helium, test_data
+from utils import prepare_helium, test_data
 import time
 import eventlet
 import math
-import threading
 from itertools import *
 eventlet.monkey_patch()
 from flask import Flask, render_template
@@ -16,20 +15,6 @@ socketio = SocketIO(app, cors_allowed_origins="*", transports=['websocket'])
 @app.route('/')
 def sessions(methods=['GET', 'POST']):
     return render_template('session.html')
-
-# from flask import Flask, request, render_template, jsonify
-# from flask_cors import CORS
-# app = Flask(__name__)
-# CORS(app)
-
-# socketio = socketio.Server()
-# socketio = socketio.AsyncServer(cors_allowed_origins=['*'])
-
-# socketio = socketio.Server(cors_allowed_origins='*', transports='websocket')
-#
-# app = socketio.WSGIApp(socketio, static_files={
-#     '/': {'content_type': 'text/html', 'filename': 'index.html'}
-# })
 
 result_count = 0
 timings = []
@@ -278,6 +263,3 @@ if test_mode:
 
 if __name__ == '__main__':
     socketio.run(app, debug=False)
-
-# if __name__ == '__main__':
-#     eventlet.wsgi.server(eventlet.listen(('', 5003)), app)
