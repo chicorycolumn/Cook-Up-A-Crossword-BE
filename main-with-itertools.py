@@ -3,7 +3,6 @@ import time
 import eventlet
 import math
 from itertools import *
-eventlet.monkey_patch()
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 
@@ -26,6 +25,8 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
     return True
 
 def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp):
+
+    socketio("started", {"time": time.time()})
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -53,16 +54,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
     gut_gen = permutations(guttedwords_across, math.ceil(cw_height / 2))
 
     while starting_timestamp == most_recent_timestamp and starting_timestamp + automatic_timeout_value > time.time():
-
-        # print("starting_timestamp", starting_timestamp)
-        # print("most_recent_timestamp", most_recent_timestamp)
-        # print("automatic_timeout_value", automatic_timeout_value)
-
-        # print(starting_timestamp == most_recent_timestamp and starting_timestamp + automatic_timeout_value > time.time())
-        # print("***")
-        # print(starting_timestamp + automatic_timeout_value)
-        # print(time.time())
-        # print("***")
 
         current_guts = next(gut_gen)
 
@@ -138,18 +129,17 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
                      {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
                       "result": result})
             socketio.sleep(0)
-    # We've been kicked out of the while loop.
 
-    else:
-        message = "Terminated by client request, or by automatic timeout that developer set (%d seconds), or (unlikely) by exhausting all permutations." % automatic_timeout_value
-        print(message)
-        socketio.emit( "message", { "message": message } )
-        if test_mode:
-            print("RESULT COUNT SO FAR IS:", result_count)
-            timings.append(result_count)
-            result_count = 0
-            count_timings()
-        return
+    # We've been kicked out of the while loop.
+    socketio.sleep(0)
+    socketio.emit('terminated', {"time": time.time()})
+    print("Successfully terminated.")
+
+    if test_mode:
+        print("RESULT COUNT SO FAR IS:", result_count)
+        timings.append(result_count)
+        result_count = 0
+        count_timings()
 
 global perm_count
 perm_count = 0
@@ -160,9 +150,9 @@ mandatory_words = []
 global most_recent_timestamp
 most_recent_timestamp = ""
 
-
 @socketio.on('grid specs')
 def receive_grid_specs(incomingData):
+
     print("The client sent these grid specifications: ", incomingData)
     global mandatory_words
     global perm_count
@@ -205,18 +195,19 @@ def terminate():
     global most_recent_timestamp
     most_recent_timestamp = time.time()
 
-def send_message(data):
-    print('This message is being sent to the client: ', data)
-    socketio.emit('message', data)
+def send_message(msg):
+    socketio.sleep(0)
+    print('This message is being sent to the client: ', msg)
+    socketio.emit('message', {"message": msg})
 
 @socketio.on('connect')
 def connect(methods=['GET', 'POST']):
     print('Client connected: ')
-    send_message({"message": "The server confirms that the client has connected."})
+    send_message("The server confirms that the client has connected.")
 
 @socketio.on("message")
 def receive_message(data, methods=['GET', 'POST']):
-    send_message({"message": "Server received: " + data["message"]})
+    send_message("Server received: " + data["message"])
     print("The client has sent this message: ", data)
 
 @socketio.on('connect_error')
@@ -235,12 +226,12 @@ def disconnect(methods=['GET', 'POST']):
 @socketio.on("please terminate")
 def client_says_terminate(methods=['GET', 'POST']):
     print("The client has asked to terminate.")
-    send_message({"message": "Hi client, I hear you want to terminate."})
+    send_message("Hi client, I hear you want to terminate.")
     terminate()
 
 @socketio.on("verify off")
 def verify_off(methods=['GET', 'POST']):
-    send_message({"million_perms_processed": perm_count / 1000000})
+    socketio.emit("message", {"million_perms_processed": perm_count / 1000000})
 
 test_mode = False    # A dev switch to input test data directly, rather than via socket connection.
 count_mode = 20     # How many iterations to count.
