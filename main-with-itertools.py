@@ -26,7 +26,7 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
 
 def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp):
 
-    socketio("started", {"time": time.time()})
+    socketio.emit("started", {"time": time.time()})
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
