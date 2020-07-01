@@ -203,7 +203,7 @@ def send_message(msg):
 @socketio.on('connect')
 def connect(methods=['GET', 'POST']):
     print('Client connected: ')
-    send_message("The server confirms that the client has connected.")
+    socketio.emit('connection confirmed', {"time": time.time()})
 
 @socketio.on("message")
 def receive_message(data, methods=['GET', 'POST']):
