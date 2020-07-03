@@ -1,3 +1,4 @@
+from collections import Counter
 from words import trunk
 import random
 import copy
@@ -5,17 +6,17 @@ import copy
 def add_desired_and_remove_banned_from_dict(desired_words, banned_words, dict):
     dict2 = copy.deepcopy(dict)
     for desired in desired_words:
-        gut = gut_words(desired)[0]
+        gut = gut_words(desired, True)[0]
         if gut in dict2.keys() and desired not in dict2[gut]:
             dict2[gut].append(desired)
         else:
             dict2[gut] = [desired]
     for banned in banned_words:
-        entry = dict2[gut_words(banned)[0]]
+        entry = dict2[gut_words(banned, True)[0]]
         if banned in entry:
             entry.remove(banned)
             if len(entry) == 0:
-                del dict2[gut_words(banned)[0]]
+                del dict2[gut_words(banned, True)[0]]
     return dict2
 
 def print_grid(grid):
@@ -27,7 +28,7 @@ def file_to_list(filename, path):
         list_lower = [word.lower() for word in list]
     return list_lower
 
-def gut_words(wordlist):
+def gut_words(wordlist, should_remove_duplicates):
 
     if isinstance(wordlist, str):
         wordlist = [wordlist]
@@ -40,8 +41,10 @@ def gut_words(wordlist):
             word_array.append(word[i])
         gutted_list.append("".join(word_array))
 
-    lis = list(set(gutted_list))
-    return lis
+    if should_remove_duplicates:
+        return list(set(gutted_list))
+    else:
+        return list(gutted_list)
 
 def ungut_words(gutted_word, wordlist):
 
@@ -86,16 +89,19 @@ def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_word
     random.shuffle(supergut)
     random.shuffle(desirable_words)
 
-    for gut in gut_words(desirable_words):
+    for gut in gut_words(desirable_words, True):
         supergut.remove(gut)
         supergut = [gut] + supergut
 
     gutted_mand = []
     if bool(mandatory_words):
-        gutted_mand = gut_words(mandatory_words)
+        gutted_mand = gut_words(mandatory_words, False)
+        print("**gutted_mand", gutted_mand)
         supergut = gutted_mand + [gut for gut in supergut if gut not in gutted_mand]
         mand_dic = make_dict(gutted_mand, mandatory_words)
         trunk_dict = sum_dicts(trunk_dict, mand_dic)
+
+    print("*gutted_mand", gutted_mand)
 
     return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand, "mand_words_filtered": mandatory_words}
 # test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
@@ -103,4 +109,11 @@ def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_word
 test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": [], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
 
 def make_dict_from_scratch(wordlength):
-    return(make_dict(gut_words(trunk[wordlength]["words"]), trunk[wordlength]["words"]))
+    return(make_dict(gut_words(trunk[wordlength]["words"], True), trunk[wordlength]["words"]))
+
+def is_A_not_fully_contained_by_B(a, b):
+    aa = Counter(a)
+    bb = Counter(b)
+    aa.subtract(bb)
+    in_A_but_not_in_B = [key for key, tally in aa.items() if tally > 0]
+    return bool(len(in_A_but_not_in_B))
