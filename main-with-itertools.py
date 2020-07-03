@@ -15,7 +15,7 @@ socketio = SocketIO(app, cors_allowed_origins="*", transports=['websocket'])
 def sessions(methods=['GET', 'POST']):
     return render_template('session.html')
 
-result_count = 0
+test_result_count = 0
 timings = []
 
 def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
@@ -48,8 +48,10 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
 
     global most_recent_timestamp
     global perm_count
+    global results_count
+    global grand_pass_count
     global test_mode
-    global result_count
+    global test_result_count
 
     socketio.sleep(1)
 
@@ -66,9 +68,22 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         #     continue
 
         perm_count += 1
+        print(perm_count)
+
         gridguts = {"across": [], "down": []}
 
-        print(perm_count)
+        if results_count == 0 and perm_count >= 150000:
+            if grand_pass_count < 3:
+                print("GRAND PASS IS", grand_pass_count)
+                grand_pass_count += 1
+                print("GRAND PASS IS", grand_pass_count)
+                incomingDataCopy["grand_pass_count"] = grand_pass_count
+                receive_grid_specs(incomingDataCopy)
+                return
+            else:
+                print("GRAND PASS AT MAX.")
+                return
+
 
         socketio.sleep(0) #Allows reception of 'please terminate' event to stop endless crunch of difficult specs.
 
@@ -124,16 +139,21 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
                 newest_line = (coord, list(filter(lambda word: word.isupper(), ungutted_list)) + list(filter(lambda word: not word.isupper(), ungutted_list)))
                 result["grid"].append(newest_line)
 
-        result_count+=1
+        test_result_count+=1
+        results_count+=1
+
+        print("so we can continue from here...?")
 
         if test_mode:
             print(result)
-            print("RESULT COUNT IS:", result_count)
+            print("RESULT COUNT IS:", test_result_count)
         else:
             socketio.sleep(0)
             print(result)
             socketio.emit("produced grid",
                      {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
+                      "results_count": results_count,
+                      "grand_pass_count": grand_pass_count,
                       "result": result})
             socketio.sleep(0)
 
@@ -143,13 +163,22 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
     print("Successfully terminated.")
 
     if test_mode:
-        print("RESULT COUNT SO FAR IS:", result_count)
-        timings.append(result_count)
-        result_count = 0
+        print("RESULT COUNT SO FAR IS:", test_result_count)
+        timings.append(test_result_count)
+        test_result_count = 0
         count_timings()
+
+def say_hello():
+    print("hello from line 168")
 
 global perm_count
 perm_count = 0
+
+global results_count
+results_count = 0
+
+global grand_pass_count
+grand_pass_count = 0
 
 global mandatory_words
 mandatory_words = []
@@ -157,13 +186,25 @@ mandatory_words = []
 global most_recent_timestamp
 most_recent_timestamp = ""
 
+incomingDataCopy = {}
+
 @socketio.on('grid specs')
 def receive_grid_specs(incomingData):
 
     print("The client sent these grid specifications: ", incomingData)
+
+    if "grand_pass_count" not in incomingData.keys():
+        global incomingDataCopy
+        incomingDataCopy = incomingData
+        global grand_pass_count
+        grand_pass_count = 0
+
     global mandatory_words
     global perm_count
     perm_count = 0
+    global results_count
+    results_count = 0
+
     starting_timestamp = time.time()
     global most_recent_timestamp
     most_recent_timestamp = starting_timestamp
@@ -240,7 +281,7 @@ def client_says_terminate(data, methods=['GET', 'POST']):
 
 @socketio.on("verify off")
 def verify_off(methods=['GET', 'POST']):
-    socketio.emit("message", {"million_perms_processed": perm_count / 1000000})
+    socketio.emit("message", {"million_perms_processed": perm_count / 1000000, "results_count": results_count, "grand_pass_count": grand_pass_count})
 
 test_mode = False    # A dev switch to input test data directly, rather than via socket connection.
 count_mode = 20     # How many iterations to count.
