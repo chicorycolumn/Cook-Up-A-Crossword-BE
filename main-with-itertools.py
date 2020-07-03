@@ -27,14 +27,8 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
 
 def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp, perms_or_product):
 
-
-
-
-
-    print("2, just about to emit conf event at start of helium")
     socketio.sleep(0)
     socketio.emit("started", {"time": time.time()})
-    print("3, just emitted conf event at start of helium")
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -48,17 +42,7 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
     desirable_down = down_resource["desirable_words"]
     mandwords_down = down_resource["mand_words_filtered"]
 
-    print("mandwords_down", mandwords_down)
-    print("mandwords_across", mandwords_across)
     mandatory_words = list(set(mandwords_across + mandwords_down))
-    print("mandatory_words", mandatory_words)
-    print("guttedmand_across", guttedmand_across)
-    print("guttedmand_down", guttedmand_down)
-
-
-    print("guttedmand_across + guttedmand_down", guttedmand_across + guttedmand_down)
-    # return
-
     desirable_combined = list(set(desirable_across + desirable_down))
 
     global most_recent_timestamp
@@ -86,11 +70,9 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         # Kick out if any across guts are in putative grid more times that they have fullwords.
         # This kickpoint can be skipped if itertools.permutations is used instead of itertools.product.
         if perms_or_product == "product" and not gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic_across):
-            print("gonna kick out ", current_guts)
             continue
 
         perm_count += 1
-        print(perm_count)
 
         gridguts = {"across": [], "down": []}
 
@@ -103,7 +85,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
             else:
                 return
 
-
         socketio.sleep(0) #Allows reception of 'please terminate' event to stop endless crunch of difficult specs.
 
         for word in current_guts:
@@ -113,17 +94,9 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
             gridguts["down"].append("".join(gut[i] for gut in gridguts["across"]))
 
         current_guts = gridguts["across"] + gridguts["down"]
-        # print(current_guts)
 
-        # print("mandatory_words", mandatory_words)
-        # print("guttedmand_across + guttedmand_down", guttedmand_across + guttedmand_down)
-        # print("current_guts", current_guts)
-        #
-        # return
         #Kick out if not all mandatory words are present.
         if bool(mandatory_words) and is_A_not_fully_contained_by_B(guttedmand_across + guttedmand_down, current_guts):
-            print(guttedmand_across + guttedmand_down)
-            print("kicking out", current_guts)
             continue
 
         # Kick out if any new guts in putative grid more times that they have fullwords.
@@ -168,8 +141,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         test_result_count+=1
         results_count+=1
 
-        print("so we can continue from here...?")
-
         if test_mode:
             print(result)
             print("RESULT COUNT IS:", test_result_count)
@@ -183,7 +154,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
                       "result": result})
             socketio.sleep(0)
 
-    # We've been kicked out of the while loop.
     socketio.sleep(0)
     socketio.emit('terminated', {"time": time.time()})
     print("Successfully terminated.")
@@ -193,9 +163,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         timings.append(test_result_count)
         test_result_count = 0
         count_timings()
-
-def say_hello():
-    print("hello from line 168")
 
 global perm_count
 perm_count = 0
@@ -223,17 +190,13 @@ def receive_grid_specs(incomingData):
     if "perms_or_product" not in incomingData.keys():
         if any(key for key, tally in Counter(gut_words(incomingData["mandatory_words"], False)).items() if tally > 1):
             incomingData["perms_or_product"] = "product"
-            print("**********************will use product")
         else:
             incomingData["perms_or_product"] = "perms"
-            print("**********************will use perms")
 
     if grand_pass_count == 2:
         if incomingData["perms_or_product"] == "product":
-            print("**************switch to perms")
             incomingData["perms_or_product"] = "perms"
         else:
-            print("**************switch to product")
             incomingData["perms_or_product"] = "product"
 
     if "grand_pass_count" not in incomingData.keys():
@@ -282,17 +245,6 @@ def receive_grid_specs(incomingData):
                 prepared_resources_down[key] = prepared_resources_across[key]
             else:
                 prepared_resources_down[key] = []
-
-
-    print('prepared_resources_down["gutted_mand"]', prepared_resources_down["gutted_mand"])
-    print('prepared_resources_down["mand_words_filtered"]', prepared_resources_down["mand_words_filtered"])
-
-    print('prepared_resources_across["gutted_mand"]', prepared_resources_across["gutted_mand"])
-    print('prepared_resources_across["mand_words_filtered"]', prepared_resources_across["mand_words_filtered"])
-
-    # return
-
-    print("1, about to invoke helium")
 
     helium(socketio, prepared_resources_across, prepared_resources_down, data["threshold"],
            data["grid_width"], data["grid_height"], automatic_timeout_value, starting_timestamp, incomingData["perms_or_product"])

@@ -96,16 +96,12 @@ def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_word
     gutted_mand = []
     if bool(mandatory_words):
         gutted_mand = gut_words(mandatory_words, False)
-        print("**gutted_mand", gutted_mand)
         supergut = gutted_mand + [gut for gut in supergut if gut not in gutted_mand]
         mand_dic = make_dict(gutted_mand, mandatory_words)
         trunk_dict = sum_dicts(trunk_dict, mand_dic)
 
-    print("*gutted_mand", gutted_mand)
-
     return {"supergut": supergut, "superdict": trunk_dict, "desirable_words": desirable_words, "gutted_mand": gutted_mand, "mand_words_filtered": mandatory_words}
-# test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ["xuxux"], "banned_words": [], "desirable_words_unfiltered": ["bobob", "yoyoy", "qiqiq"], "threshold": 2 }
-# test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": ['stream', 'title'], "banned_words": [], "desirable_words_unfiltered": ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], "threshold": 2 }
+
 test_data = { "grid_width": 5, "grid_height": 5, "mandatory_words": [], "banned_words": [], "desirable_words_unfiltered": [], "threshold": 0 }
 
 def make_dict_from_scratch(wordlength):
