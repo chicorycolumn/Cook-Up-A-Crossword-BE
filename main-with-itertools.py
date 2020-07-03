@@ -26,7 +26,10 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
 
 def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp):
 
+    print("2, just about to emit conf event at start of helium")
+    socketio.sleep(0)
     socketio.emit("started", {"time": time.time()})
+    print("3, just emitted conf event at start of helium")
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -48,7 +51,7 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
     global test_mode
     global result_count
 
-    socketio.sleep(0)
+    socketio.sleep(1)
 
     # gut_gen = product(guttedwords_across, repeat=( math.ceil(cw_height/2) ) )
     gut_gen = permutations(guttedwords_across, math.ceil(cw_height / 2))
@@ -64,6 +67,10 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
 
         perm_count += 1
         gridguts = {"across": [], "down": []}
+
+        print(perm_count)
+
+        socketio.sleep(0) #Allows reception of 'please terminate' event to stop endless crunch of difficult specs.
 
         for word in current_guts:
             gridguts["across"].append(word)
@@ -187,6 +194,8 @@ def receive_grid_specs(incomingData):
     else:
         prepared_resources_down = prepared_resources_across
 
+    print("1, about to invoke helium")
+
     helium(socketio, prepared_resources_across, prepared_resources_down, data["threshold"],
            data["grid_width"], data["grid_height"], automatic_timeout_value, starting_timestamp)
 
@@ -224,8 +233,8 @@ def disconnect(methods=['GET', 'POST']):
     terminate()
 
 @socketio.on("please terminate")
-def client_says_terminate(methods=['GET', 'POST']):
-    print("The client has asked to terminate.")
+def client_says_terminate(data, methods=['GET', 'POST']):
+    print(data)
     send_message("Hi client, I hear you want to terminate.")
     terminate()
 
@@ -253,4 +262,5 @@ if test_mode:
         receive_grid_specs(test_data)
 
 if __name__ == '__main__':
+    print("server running...")
     socketio.run(app, debug=False)
