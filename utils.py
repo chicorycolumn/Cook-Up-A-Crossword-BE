@@ -113,3 +113,30 @@ def is_A_not_fully_contained_by_B(a, b):
     aa.subtract(bb)
     in_A_but_not_in_B = [key for key, tally in aa.items() if tally > 0]
     return bool(len(in_A_but_not_in_B))
+
+def does_putative_grid_truly_meet_desithreshold(threshold, bank, desirable_combined, mandatory_words):
+
+    ref = {}
+
+    for word in desirable_combined + mandatory_words:
+        ref[word] = False
+
+    for coord in bank.keys():
+        continuing = True
+        mand_intersection = list(set(bank[coord]["ungutted"]).intersection(mandatory_words))
+        if bool(len(mand_intersection)):
+            for word in mand_intersection:
+                if not ref[word]:
+                    ref[word] = True
+                    continuing = False
+                    break
+
+        if continuing:
+            desi_intersection = list(set(bank[coord]["ungutted"]).intersection(desirable_combined))
+            if bool(len(desi_intersection)):
+                for word in desi_intersection:
+                    if not ref[word]:
+                        ref[word] = True
+                        break
+
+    return len(list(filter(lambda word : ref[word] and word in desirable_combined, ref.keys()))) >= threshold

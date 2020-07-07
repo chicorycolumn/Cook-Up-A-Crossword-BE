@@ -1,4 +1,4 @@
-from utils import prepare_helium, test_data, is_A_not_fully_contained_by_B, gut_words
+from utils import prepare_helium, test_data, is_A_not_fully_contained_by_B, gut_words, does_putative_grid_truly_meet_desithreshold
 from collections import Counter
 import time
 import eventlet
@@ -27,8 +27,15 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
 
 def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp, perms_or_product):
 
+    global most_recent_timestamp
+    global perm_count
+    global results_count
+    global grand_pass_count
+    global test_mode
+    global test_result_count
+
     socketio.sleep(0)
-    socketio.emit("started", {"time": time.time()})
+    socketio.emit("started", {"time": time.time(), "perms_or_product": perms_or_product, "grand_pass_count": grand_pass_count})
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -45,13 +52,6 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
     mandatory_words = list(set(mandwords_across + mandwords_down))
     desirable_combined = list(set(desirable_across + desirable_down))
 
-    global most_recent_timestamp
-    global perm_count
-    global results_count
-    global grand_pass_count
-    global test_mode
-    global test_result_count
-
     socketio.sleep(1)
 
     gut_gen = []
@@ -67,6 +67,8 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
 
         current_guts = next(gut_gen)
 
+        if not perm_count % 10000:
+            print(perm_count)
         # Kick out if any across guts are in putative grid more times that they have fullwords.
         # This kickpoint can be skipped if itertools.permutations is used instead of itertools.product.
         if perms_or_product == "product" and not gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic_across):
@@ -121,7 +123,8 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         bank = {**bank, **temporary_bank}
 
         #Kick out if insufficient quantity of desirable_words in putative grid.
-        if len(list(filter(lambda ungutted_list : bool(len(set(ungutted_list).intersection(desirable_combined))), [bank[coord]["ungutted"] for coord in bank.keys()]))) < threshold:
+        # if len(set(list(filter(lambda ungutted_list : bool(len(set(ungutted_list).intersection(desirable_combined))), [bank[coord]["ungutted"] for coord in bank.keys()])))) < threshold:
+        if not does_putative_grid_truly_meet_desithreshold(threshold, bank, desirable_combined, mandatory_words):
             continue
 
         result = {"summary": [gut.upper() for gut in gridguts["across"]], "grid": []}
