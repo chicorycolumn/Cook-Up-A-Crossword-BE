@@ -146,7 +146,7 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
             print("RESULT COUNT IS:", test_result_count)
         else:
             socketio.sleep(0)
-            print(result)
+            # print(result)
             socketio.emit("produced grid",
                      {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
                       "results_count": results_count,
