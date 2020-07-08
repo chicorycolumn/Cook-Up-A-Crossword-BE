@@ -191,7 +191,7 @@ global fruit
 fruit = "lemon"
 
 @socketio.on('change fruit')
-def change_fruit(incomingData, sid):
+def change_fruit(incomingData):
     global fruit
     fruit = incomingData["fruit"]
 
@@ -206,7 +206,7 @@ def check_fruit(incomingData):
 #     emit('my response', json)
 
 @socketio.on('grid specs')
-def receive_grid_specs(incomingData, sid):
+def receive_grid_specs(incomingData):
     print("The client sent these grid specifications: ", incomingData)
 
     global most_recent_timestamp
@@ -259,8 +259,8 @@ def send_message(msg):
     socketio.emit('server sent message', msg)
 
 @socketio.on('connect')
-def connect(sid, methods=['GET', 'POST']):
-    print('Client connected: ', sid)
+def connect(methods=['GET', 'POST']):
+    print('Client connected: ')
     socketio.emit('connection confirmed', {"time": time.time()})
 
 @socketio.on("client sent message")
