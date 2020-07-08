@@ -74,12 +74,17 @@ def sum_dicts(a, b):
             a[key] = b[key]
     return a
 
-def prepare_helium(grid_dimension, banned_words, desirable_words, mandatory_words):
+def prepare_helium(data, dimension_is_width, shuffle, supershuffle):
+    grid_dimension = 0
+    if dimension_is_width:
+        grid_dimension = data["grid_width"]
+    else:
+        grid_dimension = data["grid_height"]
 
     #Filter desired and banned words to only those of wordlength.
-    banned_words = list(filter(lambda w : len(w) == grid_dimension, banned_words))
-    desirable_words = list(filter(lambda w : len(w) == grid_dimension, desirable_words))
-    mandatory_words = list(filter(lambda w : len(w) == grid_dimension, mandatory_words))
+    banned_words = list(filter(lambda w : len(w) == grid_dimension, data["banned_words"]))
+    desirable_words = list(filter(lambda w : len(w) == grid_dimension, data["desirable_words_unfiltered"]))
+    mandatory_words = list(filter(lambda w : len(w) == grid_dimension, data["mandatory_words"]))
 
     #Fetch the fivers - both WORDS and DICT - from trunk. I say fivers, could be sixers, seveners, etc. Then filter.
     trunk_dict = add_desired_and_remove_banned_from_dict(desirable_words, banned_words, trunk[grid_dimension]["dict"])

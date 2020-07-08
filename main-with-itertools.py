@@ -25,17 +25,22 @@ def gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic):
             return False
     return True
 
-def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_height, automatic_timeout_value, starting_timestamp, perms_or_product):
+def helium(socketio, across_resource, down_resource, incomingData, automatic_timeout_value, starting_timestamp):
+
+    threshold = incomingData["threshold"]
+    cw_width = incomingData["grid_width"]
+    cw_height = incomingData["grid_height"]
+    perms_or_product = incomingData["perms_or_product"]
+    results_count = incomingData["results_count"]
+
+    shuffle_record = []
 
     global most_recent_timestamp
-    global perm_count
-    global results_count
-    global grand_pass_count
     global test_mode
     global test_result_count
 
     socketio.sleep(0)
-    socketio.emit("started", {"time": time.time(), "perms_or_product": perms_or_product, "grand_pass_count": grand_pass_count})
+    socketio.emit("started", {"time": time.time(), "perms_or_product": perms_or_product, "grand_pass_count": incomingData["grand_pass_count"]})
 
     guttedwords_across = across_resource["supergut"]
     guttedmand_across = across_resource["gutted_mand"]
@@ -56,33 +61,44 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
 
     gut_gen = []
 
+    print("guttedwords_across[0:12]", guttedwords_across[0:12])
+
     if perms_or_product == "product":
         print("PRODUCT")
-        gut_gen = product(guttedwords_across, repeat=( math.ceil(cw_height/2) ) )
+        gut_gen = product(guttedwords_across, repeat=(math.ceil(cw_height/2)))
     else:
         print("PERMS")
-        gut_gen = permutations(guttedwords_across, math.ceil(cw_height / 2))
+        gut_gen = permutations(guttedwords_across, math.ceil(cw_height/2))
 
     while starting_timestamp == most_recent_timestamp and starting_timestamp + automatic_timeout_value > time.time():
 
         current_guts = next(gut_gen)
 
-        if not perm_count % 10000:
-            print(perm_count)
+        if incomingData["perm_count"] < 20:
+            shuffle_record.append(current_guts)
+        elif incomingData["perm_count"] == 20:
+            socketio.sleep(0)
+            send_message({"shuffle_record": shuffle_record})
+
+        if incomingData["perm_count"] and not incomingData["perm_count"] % 50000:
+            print('incomingData["perm_count"], perms_or_product', incomingData["perm_count"], perms_or_product)
+            socketio.sleep(0)
+            send_message({"million_perms_processed": incomingData["perm_count"] / 1000000, "results_count": incomingData["results_count"],
+                                      "grand_pass_count": incomingData["grand_pass_count"], "perms_or_product": perms_or_product})
+
         # Kick out if any across guts are in putative grid more times that they have fullwords.
         # This kickpoint can be skipped if itertools.permutations is used instead of itertools.product.
         if perms_or_product == "product" and not gut_in_grid_not_more_times_than_it_has_dic_entries(current_guts, dic_across):
             continue
 
-        perm_count += 1
+        incomingData["perm_count"] += 1
 
         gridguts = {"across": [], "down": []}
 
-        if results_count == 0 and perm_count >= 150000:
-            if grand_pass_count < 2:
-                grand_pass_count += 1
-                incomingDataCopy["grand_pass_count"] = grand_pass_count
-                receive_grid_specs(incomingDataCopy)
+        if results_count == 0 and incomingData["perm_count"] > 150000:
+            if incomingData["grand_pass_count"] < 2:
+                incomingData["grand_pass_count"] += 1
+                receive_grid_specs(incomingData)
                 return
             else:
                 return
@@ -151,9 +167,10 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
             socketio.sleep(0)
             # print(result)
             socketio.emit("produced grid",
-                     {"mandatory_words": mandatory_words, "million_perms_processed": perm_count / 1000000,
+                     {"mandatory_words": mandatory_words, "million_perms_processed": incomingData["perm_count"] / 1000000,
                       "results_count": results_count,
-                      "grand_pass_count": grand_pass_count,
+                      "grand_pass_count": incomingData["grand_pass_count"],
+                      "perms_or_product": perms_or_product,
                       "result": result})
             socketio.sleep(0)
 
@@ -167,81 +184,61 @@ def helium(socketio, across_resource, down_resource, threshold, cw_width, cw_hei
         test_result_count = 0
         count_timings()
 
-global perm_count
-perm_count = 0
-
-global results_count
-results_count = 0
-
-global grand_pass_count
-grand_pass_count = 0
-
-global mandatory_words
-mandatory_words = []
-
 global most_recent_timestamp
 most_recent_timestamp = ""
 
-incomingDataCopy = {}
+global fruit
+fruit = "lemon"
+
+@socketio.on('change fruit')
+def change_fruit(incomingData, sid):
+    global fruit
+    fruit = incomingData["fruit"]
+
+@socketio.on('check fruit')
+def check_fruit(incomingData):
+    global fruit
+    send_message({"fruit": fruit})
+    # emit("message", {incomingData)
+
+# @socketio.on('my event')
+# def handle_my_custom_event(json):
+#     emit('my response', json)
 
 @socketio.on('grid specs')
-def receive_grid_specs(incomingData):
+def receive_grid_specs(incomingData, sid):
     print("The client sent these grid specifications: ", incomingData)
 
-    global grand_pass_count
+    global most_recent_timestamp
+    starting_timestamp = time.time()
+    most_recent_timestamp = starting_timestamp
 
-    if "perms_or_product" not in incomingData.keys():
+    incomingData["perm_count"] = 0
+
+    if "grand_pass_count" not in incomingData.keys():
+        print("FIRST TIME RECEPTION")
+        incomingData["grand_pass_count"] = 0
+        incomingData["results_count"] = 0
+
         if any(key for key, tally in Counter(gut_words(incomingData["mandatory_words"], False)).items() if tally > 1):
             incomingData["perms_or_product"] = "product"
         else:
             incomingData["perms_or_product"] = "perms"
 
-    if grand_pass_count == 2:
+    if incomingData["grand_pass_count"] == 2:
         if incomingData["perms_or_product"] == "product":
             incomingData["perms_or_product"] = "perms"
         else:
             incomingData["perms_or_product"] = "product"
 
-    if "grand_pass_count" not in incomingData.keys():
-        global incomingDataCopy
-        incomingDataCopy = incomingData
-        grand_pass_count = 0
+    if incomingData["threshold"] > len(incomingData["desirable_words_unfiltered"]):
+        incomingData["threshold"] = len(incomingData["desirable_words_unfiltered"])
 
-    global mandatory_words
-    global perm_count
-    perm_count = 0
-    global results_count
-    results_count = 0
+    prepared_resources_across = prepare_helium(incomingData, True, False, False)
 
-    starting_timestamp = time.time()
-    global most_recent_timestamp
-    most_recent_timestamp = starting_timestamp
-
-    data = {
-        "banned_words": [],
-        "desirable_words_unfiltered": [],
-        "threshold": 0,
-        "grid_width": 0,
-        "grid_height": 0
-    }
-
-    for key in data.keys():
-        data[key] = incomingData[key] if key in incomingData.keys() else data[key]
-
-    if "mandatory_words" in incomingData.keys():
-        mandatory_words = incomingData["mandatory_words"]
-
-    desirable_words_unfiltered = list(set(data["desirable_words_unfiltered"]).difference(data["banned_words"]))
-
-    if data["threshold"] > len(desirable_words_unfiltered):
-        data["threshold"] = len(desirable_words_unfiltered)
-
-    prepared_resources_across = prepare_helium(data["grid_width"], data["banned_words"], desirable_words_unfiltered, mandatory_words)
-
-    if data["grid_height"] != data["grid_width"]:
-        prepared_resources_down = prepare_helium(data["grid_height"], data["banned_words"], desirable_words_unfiltered, mandatory_words)
+    if incomingData["grid_height"] != incomingData["grid_width"]:
+        prepared_resources_down = prepare_helium(incomingData, False, False, False)
     else:
-
         prepared_resources_down = {}
         for key in prepared_resources_across:
             if key not in ["gutted_mand", "mand_words_filtered"]:
@@ -249,8 +246,7 @@ def receive_grid_specs(incomingData):
             else:
                 prepared_resources_down[key] = []
 
-    helium(socketio, prepared_resources_across, prepared_resources_down, data["threshold"],
-           data["grid_width"], data["grid_height"], automatic_timeout_value, starting_timestamp, incomingData["perms_or_product"])
+    helium(socketio, prepared_resources_across, prepared_resources_down, incomingData, automatic_timeout_value, starting_timestamp)
 
 def terminate():
     print("The process will be terminated.")
@@ -259,17 +255,17 @@ def terminate():
 
 def send_message(msg):
     socketio.sleep(0)
-    print('This message is being sent to the client: ', msg)
-    socketio.emit('message', {"message": msg})
+    # print('This message is being sent to the client: ', msg)
+    socketio.emit('server sent message', msg)
 
 @socketio.on('connect')
-def connect(methods=['GET', 'POST']):
-    print('Client connected: ')
+def connect(sid, methods=['GET', 'POST']):
+    print('Client connected: ', sid)
     socketio.emit('connection confirmed', {"time": time.time()})
 
-@socketio.on("message")
+@socketio.on("client sent message")
 def receive_message(data, methods=['GET', 'POST']):
-    send_message("Server received: " + data["message"])
+    send_message({"message": "Server received: " + data["message"]})
     print("The client has sent this message: ", data)
 
 @socketio.on('connect_error')
@@ -288,12 +284,8 @@ def disconnect(methods=['GET', 'POST']):
 @socketio.on("please terminate")
 def client_says_terminate(data, methods=['GET', 'POST']):
     print(data)
-    send_message("Hi client, I hear you want to terminate.")
+    send_message({"message": "Hi client, I hear you want to terminate."})
     terminate()
-
-@socketio.on("verify off")
-def verify_off(methods=['GET', 'POST']):
-    socketio.emit("message", {"million_perms_processed": perm_count / 1000000, "results_count": results_count, "grand_pass_count": grand_pass_count})
 
 test_mode = False    # A dev switch to input test data directly, rather than via socket connection.
 count_mode = 20     # How many iterations to count.
