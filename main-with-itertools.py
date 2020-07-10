@@ -61,7 +61,10 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
 
     gut_gen = []
 
+
+    socketio.sleep(0)
     print("guttedwords_across[0:12]", guttedwords_across[0:12])
+    send_message({"guttedwords_across[0:12]": guttedwords_across[0:12]})
 
     if perms_or_product == "product":
         print("PRODUCT")
@@ -78,6 +81,7 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
             shuffle_record.append(current_guts)
         elif incomingData["perm_count"] == 20:
             socketio.sleep(0)
+            print("shuffle_record", shuffle_record)
             send_message({"shuffle_record": shuffle_record})
 
         if incomingData["perm_count"] and not incomingData["perm_count"] % 50000:
