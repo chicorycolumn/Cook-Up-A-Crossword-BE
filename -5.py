@@ -1,9 +1,11 @@
-obj = {"name": "billie"}
-objCopy = obj
-obj["age"] = 33
-objCopy["age"] = 33
+import random
 
-obj["age"] += 1
+def ran(order):
+    if len(order) < 3:
+        return order[::-1]
+    else:
+        while order == sorted(order) or order == sorted(order)[::-1]:
+            random.shuffle(order)
+        return order
 
-print("obj", obj)
-print("objCopy", objCopy)
+print(ran([0, 1, 2]))

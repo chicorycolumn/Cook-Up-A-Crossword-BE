@@ -145,3 +145,15 @@ def does_putative_grid_truly_meet_desithreshold(threshold, bank, desirable_combi
                         break
 
     return len(list(filter(lambda word : ref[word] and word in desirable_combined, ref.keys()))) >= threshold
+
+def create_set_order_for_shuffling(num_of_solid_rows):
+    order = [i for i in range(num_of_solid_rows)]
+    if len(order) < 3:
+        return order[::-1]
+    else:
+        while order == sorted(order) or order == sorted(order)[::-1]:
+            random.shuffle(order)
+        return order
+
+def shuffle_according_to_set_order(tuple, order):
+    return [tuple[order[i]] for i in range(len(tuple))]
