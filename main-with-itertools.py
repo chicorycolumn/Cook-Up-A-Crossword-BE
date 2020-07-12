@@ -58,20 +58,34 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
     desirable_combined = list(set(desirable_across + desirable_down))
     set_order_for_shuffling = [i for i in range(math.ceil(cw_height/2))]
 
-    socketio.sleep(1)
+    socketio.sleep(0) #This used to be 1.
 
     gut_gen = []
 
     socketio.sleep(0)
-    print("guttedwords_across[0:12]", guttedwords_across[0:12])
     send_message({"guttedwords_across[0:12]": guttedwords_across[0:12]})
 
     if perms_or_product == "product":
+        divisor = 1
+        upper_bound = math.ceil(len(guttedwords_across)/divisor)
+        repeat_bound = math.ceil(cw_height/2)
+        input = guttedwords_across[0:upper_bound]
+        total_if_ran_forever = len(input)**repeat_bound
+
+        # while total_if_ran_forever > (15000 * 10**12):
+        while total_if_ran_forever > (1000 * max_products_or_perms_before_new_pass):
+            divisor += 1
+            upper_bound = math.ceil(len(guttedwords_across) / divisor)
+            repeat_bound = math.ceil(cw_height / 2)
+            input = guttedwords_across[0:upper_bound]
+            total_if_ran_forever = len(input) ** repeat_bound
         print("PRODUCT")
-        gut_gen = product(guttedwords_across, repeat=(math.ceil(cw_height/2)))
+        gut_gen = product(input, repeat=(repeat_bound))
     else:
+        input = guttedwords_across
+        repeat_bound = math.ceil(cw_height/2)
         print("PERMS")
-        gut_gen = permutations(guttedwords_across, math.ceil(cw_height/2))
+        gut_gen = permutations(input, repeat_bound)
 
     if incomingData["grand_pass_count"] == 2:
         set_order_for_shuffling = create_set_order_for_shuffling(math.ceil(cw_height/2))
@@ -88,15 +102,14 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
             current_guts = next(gut_gen)
 
 
-        if incomingData["perm_count"] < 10:
+        if incomingData["perm_count"] < 10 and len(shuffle_record) < 10:
             shuffle_record.append(current_guts)
         elif incomingData["perm_count"] == 10:
             socketio.sleep(0)
-            print("shuffle_record", shuffle_record)
             send_message({"shuffle_record": shuffle_record})
 
         if incomingData["perm_count"] and not incomingData["perm_count"] % 50000:
-            print('incomingData["perm_count"], perms_or_product', incomingData["perm_count"], perms_or_product, incomingData["grand_pass_count"])
+            print(current_guts)
             socketio.sleep(0)
             send_message({"million_perms_processed": incomingData["perm_count"] / 1000000, "results_count": incomingData["results_count"],
                                       "grand_pass_count": incomingData["grand_pass_count"], "perms_or_product": perms_or_product})
@@ -110,7 +123,8 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
 
         gridguts = {"across": [], "down": []}
 
-        if results_count == 0 and incomingData["perm_count"] > 150000:
+        # if results_count == 0 and incomingData["perm_count"] > max_products_or_perms_before_new_pass:
+        if incomingData["perm_count"] > max_products_or_perms_before_new_pass:
             if incomingData["grand_pass_count"] < 3:
                 incomingData["grand_pass_count"] += 1
                 receive_grid_specs(incomingData)
@@ -176,11 +190,9 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
         results_count+=1
 
         if test_mode:
-            print(result)
-            print("RESULT COUNT IS:", test_result_count)
+            print(result, "RESULT COUNT IS:", test_result_count)
         else:
             socketio.sleep(0)
-            # print(result)
             socketio.emit("produced grid",
                      {"mandatory_words": mandatory_words, "million_perms_processed": incomingData["perm_count"] / 1000000,
                       "results_count": results_count,
@@ -191,7 +203,6 @@ def helium(socketio, across_resource, down_resource, incomingData, automatic_tim
 
     socketio.sleep(0)
     socketio.emit('terminated', {"time": time.time()})
-    print("Successfully terminated.")
 
     if test_mode:
         print("RESULT COUNT SO FAR IS:", test_result_count)
@@ -205,6 +216,9 @@ most_recent_timestamp = ""
 global fruit
 fruit = "lemon"
 
+global max_products_or_perms_before_new_pass
+max_products_or_perms_before_new_pass = 150000
+
 @socketio.on('change fruit')
 def change_fruit(incomingData):
     global fruit
@@ -214,11 +228,6 @@ def change_fruit(incomingData):
 def check_fruit(incomingData):
     global fruit
     send_message({"fruit": fruit})
-    # emit("message", {incomingData)
-
-# @socketio.on('my event')
-# def handle_my_custom_event(json):
-#     emit('my response', json)
 
 @socketio.on('grid specs')
 def receive_grid_specs(incomingData):
@@ -231,7 +240,6 @@ def receive_grid_specs(incomingData):
     incomingData["perm_count"] = 0
 
     if "grand_pass_count" not in incomingData.keys():
-        print("FIRST TIME RECEPTION")
         incomingData["grand_pass_count"] = 0
         incomingData["results_count"] = 0
 
@@ -264,13 +272,11 @@ def receive_grid_specs(incomingData):
     helium(socketio, prepared_resources_across, prepared_resources_down, incomingData, automatic_timeout_value, starting_timestamp)
 
 def terminate():
-    print("The process will be terminated.")
     global most_recent_timestamp
     most_recent_timestamp = time.time()
 
 def send_message(msg):
     socketio.sleep(0)
-    # print('This message is being sent to the client: ', msg)
     socketio.emit('server sent message', msg)
 
 @socketio.on('connect')
@@ -298,7 +304,6 @@ def disconnect(methods=['GET', 'POST']):
 
 @socketio.on("please terminate")
 def client_says_terminate(data, methods=['GET', 'POST']):
-    print(data)
     send_message({"message": "Hi client, I hear you want to terminate."})
     terminate()
 
