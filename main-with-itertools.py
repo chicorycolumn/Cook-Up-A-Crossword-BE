@@ -214,7 +214,7 @@ global most_recent_timestamp
 most_recent_timestamp = ""
 
 global fruit
-fruit = "lemon"
+fruit = "lime"
 
 global max_products_or_perms_before_new_pass
 max_products_or_perms_before_new_pass = 150000
