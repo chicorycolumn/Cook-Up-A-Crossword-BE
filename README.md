@@ -4,8 +4,6 @@
 
 A custom crossword maker. Enter your word into an elegant and verdant interface, and millions of calculations will check against a word bank of thousands to create complete crossword grids to your specifications.
 
-I took this opportunity to learn a new programming language - Python - and a new frontend framework - Angular. I chose Python for being one of the most widely used languages in data science, as well as further diversification of my coding knowledge. Its extensive range of modules and libraries would also come in useful.
-
 ## Instructions
 
 This backend is live on [Heroku](https://cook-up-a-crossword.herokuapp.com/).
