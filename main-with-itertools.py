@@ -4,17 +4,23 @@ import time
 import eventlet
 import math
 from itertools import *
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_socketio import SocketIO
+import os
 
 eventlet.monkey_patch()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 socketio = SocketIO(app, cors_allowed_origins="*", transports=['websocket'])
 
 @app.route('/')
 def sessions(methods=['GET', 'POST']):
     return render_template('session.html')
+
+@app.route("/static/favicon.ico")
+def fav():
+    print(os.path.join(app.root_path, 'static'))
+    return send_from_directory(app.static_folder, 'favicon.ico')
 
 test_result_count = 0
 timings = []
