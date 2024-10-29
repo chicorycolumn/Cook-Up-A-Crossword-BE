@@ -1,0 +1,331 @@
+C:\Users\alani\Desktop\CWW-1\venv\Scripts\python.exe C:/Users/alani/Desktop/CWW-1/main-with-recursion.py
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'RMS', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ramps', 'rimes', 'romps', 'rumps']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['aisle'])]}
+*****************  7
+{'summary': ['SRA', 'RMR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['rumor']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['agree'])]}
+*****************  8
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'AMD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['aimed', 'armed']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['REMIT']), ('3do', ['addle'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'RMP', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['remap']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['ample', 'apple'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'AMD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['aimed', 'armed']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['REMIT']), ('3do', ['addle'])]}
+*****************  7
+{'summary': ['SRA', 'RMP', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['remap']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['ample', 'apple'])]}
+*****************  8
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'RMR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['rumor']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['agree'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'RMR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['rumor']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['agree'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'AMD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['aimed', 'armed']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['REMIT']), ('3do', ['addle'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+{'summary': ['SRA', 'RMO', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['romeo']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['REMIT']), ('3do', ['abode', 'above', 'adobe', 'adore', 'afore', 'alone', 'anode', 'arose', 'atone', 'awoke'])]}
+*****************  7
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+The client sent these grid specifications:  {'mandatory_words': ['stream', 'title'], 'banned_words': [], 'desirable_words_unfiltered': ['holds', 'strut', 'yearn', 'hasty', 'larva', 'satin', 'caper', 'serif', 'solve', 'casts', 'peril', 'rifle', 'bones', 'ibiza', 'knelt', 'brisk', 'noise', 'smart', 'dread', 'mafia', 'runny', 'demur', 'elfin', 'diary', 'remit', 'nerve', 'ether', 'range', 'march', 'their', 'felon', 'arced', 'eider', 'flame', 'laced', 'nadir', 'bolts', 'cruel', 'pesto', 'bicep', 'lauds', 'salvo', 'vapid', 'utter', 'testy', 'vault', 'paths', 'dirty', 'basin', 'relic', 'doses', 'bared', 'soles', 'nicks', 'petit', 'salty', 'alert', 'pasta', 'tilde', 'tryst', 'swoon', 'anger', 'match', 'swarm', 'ought', 'north', 'stale', 'rabid', 'plead', 'strip', 'amble', 'ended', 'robed', 'video', 'leers', 'rival', 'badge', 'drops', 'macro', 'scuff', 'riser', 'miser', 'clubs', 'offer', 'dross', 'earth', 'media', 'dream', 'oared', 'schwa'], 'threshold': 2}
+{'summary': ['SRA', 'TTE', 'NRH'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['NORTH']), ('1do', ['SATIN']), ('2do', ['rater', 'rotor']), ('3do', ['aleph'])]}
+*****************  1
+{'summary': ['SRA', 'TTE', 'SRT'], 'grid': [('1ac', 'STREAM'), ('4ac', 'TITLE'), ('5ac', ['STRUT']), ('1do', ['sates', 'sites']), ('2do', ['rater', 'rotor']), ('3do', ['ALERT'])]}
+*****************  2
+{'summary': ['SRA', 'AGR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ANGER']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['right']), ('3do', ['agree'])]}
+*****************  3
+{'summary': ['SRA', 'RBD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ROBED', 'RABID']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['rebut', 'robot']), ('3do', ['addle'])]}
+*****************  4
+{'summary': ['SRA', 'ACD', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['ARCED']), ('5ac', 'TITLE'), ('1do', ['SMART']), ('2do', ['recut']), ('3do', ['addle'])]}
+*****************  5
+{'summary': ['SRA', 'RSR', 'TTE'], 'grid': [('1ac', 'STREAM'), ('4ac', ['RISER']), ('5ac', 'TITLE'), ('1do', ['STRUT']), ('2do', ['reset']), ('3do', ['agree'])]}
+*****************  6
+Traceback (most recent call last):
+  File "C:/Users/alani/Desktop/CWW-1/main-with-recursion.py", line 286, in <module>
+    eventlet.wsgi.server(eventlet.listen(('', 5001)), app)
+  File "C:\Users\alani\Desktop\CWW-1\venv\lib\site-packages\eventlet\convenience.py", line 78, in listen
+    sock.bind(addr)
+OSError: [WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted
+Terminated by the automatic timeout that the developer set, which was 10 seconds.
+gotta go
+With RECURSION, the timings are:  [8, 7, 6, 7, 6, 8, 6, 7, 7, 6, 6, 6, 6, 7, 6, 6, 6, 6, 7, 6]
+Average results per iteration:  6.5
+Timeout:  10
+Number of iterations counted:  20
